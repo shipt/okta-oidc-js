@@ -18,8 +18,8 @@ import {
 } from '@okta/configuration-validation';
 
 import { OKTA_CONFIG, OktaConfig, AuthRequiredFunction } from '../models/okta.config';
-import { UserClaims } from '../models/user-claims';
-import { TokenManager, AccessToken, IDToken } from '../models/token-manager';
+// import { UserClaims } from '../models/user-claims';
+// import { TokenManager, AccessToken, IDToken } from '../models/token-manager';
 
 import packageInfo from '../packageInfo';
 
@@ -28,6 +28,11 @@ import packageInfo from '../packageInfo';
  */
 import OktaAuth from '@okta/okta-auth-js';
 import { Observable, Observer } from 'rxjs';
+
+type TokenManagerAPI = OktaAuth.TokenManagerAPI;
+type AccessToken = OktaAuth.AccessToken;
+type IDToken = OktaAuth.IDToken;
+type UserClaims = OktaAuth.UserClaims;
 
 @Injectable()
 export class OktaAuthService {
@@ -76,7 +81,7 @@ export class OktaAuthService {
       return this.loginRedirect(undefined, additionalParams);
     }
 
-    getTokenManager(): TokenManager {
+    getTokenManager(): TokenManagerAPI {
       return this.oktaAuth.tokenManager;
     }
 

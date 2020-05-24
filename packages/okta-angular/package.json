@@ -12,6 +12,7 @@
     "fesm2015": "./fesm2015/okta-angular.js",
     "typings": "./okta-angular.d.ts",
     "scripts": {
+        "clean": "rimraf dist/",
         "build:package-info": "node ../../util/write-package-info.js . src/okta/packageInfo.ts",
         "lint": "tslint -p tsconfig.json -t stylish src/**/*.ts",
         "prebuild": "yarn build:package-info",
@@ -67,6 +68,7 @@
         "jest-preset-angular": "^7.1.1",
         "raw-loader": "1.0.0",
         "reflect-metadata": "0.1.13",
+        "rimraf": "^3.0.2",
         "rollup": "1.29.0",
         "rollup-plugin-license": "0.8.1",
         "rollup-plugin-sourcemaps": "0.4.2",

@@ -12,35 +12,36 @@
 
 import { InjectionToken, Injector } from '@angular/core';
 import { OktaAuthService } from '../services/okta.service';
+import * as OktaAuth from '@okta/okta-auth-js';
 
 export type AuthRequiredFunction = (oktaAuth: OktaAuthService, injector: Injector) => void;
 export type IsAuthenticatedFunction = () => Promise<boolean>;
-export type OnSessionExpiredFunction = () => void;
+// export type OnSessionExpiredFunction = () => void;
 
 export interface TestingObject {
   disableHttpsCheck: boolean;
 }
 
-export interface TokenManagerConfig {
-  autoRenew?: boolean;
-  secure?: boolean;
-  storage?: string;
-}
+// export interface TokenManagerConfig {
+//   autoRenew?: boolean;
+//   secure?: boolean;
+//   storage?: string;
+// }
 
-export interface OktaConfig {
-  issuer?: string;
-  redirectUri?: string;
-  clientId?: string;
-  scope?: string;
-  scopes?: string[];
-  responseType?: any; // can be string or array
-  pkce?: boolean;
+export interface OktaConfig extends OktaAuth.OktaAuthOptions {
+  // issuer?: string;
+  // redirectUri?: string;
+  // clientId?: string;
+  // scope?: string;
+  // scopes?: string[];
+  // responseType?: any; // can be string or array
+  // pkce?: boolean;
   onAuthRequired?: AuthRequiredFunction;
   testing?: TestingObject;
-  tokenManager?: TokenManagerConfig;
-  postLogoutRedirectUri?: string;
+  // tokenManager?: TokenManagerConfig;
+  // postLogoutRedirectUri?: string;
   isAuthenticated?: IsAuthenticatedFunction;
-  onSessionExpired?: OnSessionExpiredFunction;
+  // onSessionExpired?: OnSessionExpiredFunction;
 }
 
 export const OKTA_CONFIG = new InjectionToken<OktaConfig>('okta.config.angular');
