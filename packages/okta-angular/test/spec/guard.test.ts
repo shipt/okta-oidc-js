@@ -1,8 +1,13 @@
-jest.mock('@okta/okta-auth-js');
-
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { OktaAuth } from '@okta/okta-auth-js';
+
+jest.mock('@okta/okta-auth-js', () => {
+  // Works and lets you check for constructor calls:
+  return {
+    OktaAuth: jest.fn().mockImplementation(() => {}),
+  };
+});
 
 import {
   OktaAuthModule,
@@ -24,7 +29,7 @@ function createService(options: any) {
 
   const oktaAuth = options.oktaAuth || {};
   oktaAuth.tokenManager = oktaAuth.tokenManager || { on: jest.fn() };
-  OktaAuth.mockImplementation(() => oktaAuth);
+  (OktaAuth as any).mockImplementation(() => oktaAuth);
 
   TestBed.configureTestingModule({
     imports: [
@@ -50,7 +55,7 @@ function createService(options: any) {
 describe('Angular auth guard', () => {
 
   beforeEach(() => {
-    OktaAuth.mockClear();
+    (OktaAuth as any).mockClear();
   });
   afterEach(() => {
     jest.restoreAllMocks();
