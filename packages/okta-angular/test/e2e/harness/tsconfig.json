@@ -14,10 +14,10 @@
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types",

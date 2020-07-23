@@ -2,7 +2,7 @@ jest.mock('@okta/okta-auth-js');
 
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import OktaAuth from '@okta/okta-auth-js';
+import { OktaAuth } from '@okta/okta-auth-js';
 
 import {
   OktaAuthModule,

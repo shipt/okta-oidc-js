@@ -26,13 +26,8 @@ import packageInfo from '../packageInfo';
 /**
  * Import the okta-auth-js library
  */
-import OktaAuth from '@okta/okta-auth-js';
+import { OktaAuth, TokenManager, AccessToken, IDToken, UserClaims } from '@okta/okta-auth-js';
 import { Observable, Observer } from 'rxjs';
-
-type TokenManagerAPI = OktaAuth.TokenManagerAPI;
-type AccessToken = OktaAuth.AccessToken;
-type IDToken = OktaAuth.IDToken;
-type UserClaims = OktaAuth.UserClaims;
 
 @Injectable()
 export class OktaAuthService {
@@ -81,7 +76,7 @@ export class OktaAuthService {
       return this.loginRedirect(undefined, additionalParams);
     }
 
-    getTokenManager(): TokenManagerAPI {
+    getTokenManager(): TokenManager {
       return this.oktaAuth.tokenManager;
     }
 

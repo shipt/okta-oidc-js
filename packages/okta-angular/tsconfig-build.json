@@ -25,7 +25,7 @@
             "node_modules/@types/",
             "src/@types/"
         ],
-        "esModuleInterop": true,
+        "esModuleInterop": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "sourceMap": true,
